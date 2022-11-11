@@ -1,3 +1,4 @@
+
 <?php 
 require "header.php";
 include "admin/conn.php";
@@ -13,23 +14,23 @@ include "admin/conn.php";
 //fetch settings
 
 $settings= mysqli_query($con,"SELECT*FROM Settings");
-$setting =mysqli_fetch_array($settings);
+// $setting =mysqli_fetch_array($settings);
 ?>
+<!DOCTYPE html>
 <html class="no-js" lang="zxx">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ 
     <title>
     Home |
     <?php echo $setting['site_name']; ?></title>
+ 
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
-    <!-- <link rel="shortcut icon" href="assets\img\blog\author.png"> -->
-    <link rel="shortcut icon" type="image" href="assets/img/<?php echo $setting['title_logo'] ?>">
-    <link rel="icon" type="image" sizes="32x32" href="assets/img/<?php echo $setting['title_logo'] ?>">
-    <link rel="icon"   href="assets/img/<?php echo $setting['title_logo'] ?>">
-    
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/<?php echo $setting['title_logo']?>">
+  
 	<!-- CSS here -->
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/css/owl.carousel.min.css">

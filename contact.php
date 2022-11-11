@@ -129,39 +129,39 @@ require 'header.php';
                     </div>
                     <div class="col-lg-8">
                     
-                        <form class="form-contact contact_form" action="" method="post" id="contactForm" novalidate="novalidate">
+                        <form class="form-contact contact_form" action="sendmail.php" method="post"  novalidate="novalidate">
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <textarea class="form-control w-100" name="message" id="message" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Message'" placeholder=" Enter Message"></textarea>
+                                        <textarea class="form-control w-100" name="message" id="message" cols="30" rows="9" required placeholder=" Enter Message"></textarea>
                                     </div>
                                 </div>
                                 <br/>
                                 <div class="col-sm-6">
                                 <br/>
                                     <div class="form-group">
-                                        <input class="form-control valid" name="name" id="name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" placeholder="Enter your name">
+                                        <input class="form-control valid" name="name" id="name" type="text"  placeholder="Enter your name">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                 <br/>
                                     <div class="form-group">
-                                        <input class="form-control valid" name="email" id="email" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" placeholder="Email">
+                                        <input class="form-control valid" name="email" id="email" type="email"  placeholder="Enter email address">
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <input class="form-control" name="number" id="number" type="tel" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Phone Number'" placeholder="Enter Phone number">
+                                        <input class="form-control" name="phone" id="phone" type="tel"  placeholder="Enter Phone number">
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <input class="form-control" name="subject" id="subject" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'" placeholder="Enter Subject">
+                                        <input class="form-control" name="subject" id="subject" type="text"  placeholder="Enter Subject">
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group mt-3">
-                                <button type="submit"  class="button button-contactForm boxed-btn">Send</button>
+                                <button type="submit" name="submit"  class="button button-contactForm boxed-btn">Send</button>
                             </div>
                          
                           
