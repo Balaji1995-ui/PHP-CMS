@@ -1,16 +1,12 @@
 .our-services{    
     .single-services{
         padding: 79px 23px;
-        @media #{$lg}{
-			padding: 46px 23px;
-        }
+      
         @media #{$md}{
 			padding: 56px 32px;
         }
 
-        @media #{$xs}{
-			padding: 47px 19px;
-        }
+    
         @media #{$sm}{
 			padding: 47px 19px;
         }

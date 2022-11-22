@@ -1,24 +1,34 @@
 <?php 
 
+// $keyId = 'rzp_test_WG1csnsMNhFWb1';
+// $keySecret = 'X2ij3YolRdGIWicNEjQWTDlE';
+// $displayCurrency = 'INR';
+
+// $keyId = 'rzp_live_nvJz75Vpllw8q9';
+// $keySecret = 'xpKrFnP7HgB4bkkaJJVyM8Va';
+// $displayCurrency = 'INR';
 
 
-$host = "localhost";
+$keyId = 'rzp_test_82w8nwDrvtgzaz';
+$keySecret = 'Q1isHP69FYlH3AwlHjfWYOnQ';
+$displayCurrency = 'INR';
+
+$host = 'db-visual.c1s8ehgdn3pp.us-east-1.rds.amazonaws.com';
 
 $user = "root";
 
-$password = "root";
+$password = '9s0umq3hTjeEbAWRg2EJ';
 
-$dbname = "mybook";
+$dbname = "invest";
 
 
+// $host = "localhost";
 
-// $host = "db-visual.c1s8ehgdn3pp.us-east-1.rds.amazonaws.com";
+// $user = "loapnaghar_root";
 
-// $user = "root";
+// $password = "n@=nsH,vrcOL";
 
-// $password = "9s0umq3hTjeEbAWRg2EJ";
-
-// $dbname = "mybook";
+// $dbname = "loapnaghar_mybook";
 
 
 $con = mysqli_connect($host, $user, $password, $dbname);

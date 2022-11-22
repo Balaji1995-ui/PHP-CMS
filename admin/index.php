@@ -4,7 +4,7 @@ include 'auth.php';
 
 $a=1;
 
-// $sql = ("SELECT COUNT(*) FROM users");
+// $sql = ("SELECT COUNT(id) FROM users");
 // $result = mysql_fetch_array($sql);
 // $settings= mysqli_query($con,"SELECT COUNT(*) as bookcode
 // FROM users");
@@ -73,12 +73,12 @@ $a=1;
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-			<a href="add-blog.php" class="small-box-footer">
+			<a href="view-services.php" class="small-box-footer">
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3> Add Blog</h3>
+                <h3> View Plan</h3>
 
-                <p>Add</p>
+                <p>View</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
@@ -89,12 +89,16 @@ $a=1;
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-			<a href="view-blog.php" class="small-box-footer">
+			<a href="UserReport.php" class="small-box-footer">
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>View Blog</h3>
+                <h3>View User</h3>
 
                 <p>View</p>
+
+                <span class="info-box-number"><?php
+                                         
+                                                    ?></span>
               </div>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
@@ -103,87 +107,9 @@ $a=1;
 			</a>
           </div>
           <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-			<a href="settings.php" class="small-box-footer">
-            <div class="small-box bg-primary">
-              <div class="inner">
-                <h3>Terminal</h3>
+          
 
-                <p>View</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div>
-             </div>
-			</a>
-          </div>
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-			<a href="add-category.php" class="small-box-footer">
-            <div class="small-box bg-secondary">
-              <div class="inner">
-                <h3>Category</h3>
 
-                <p>Add</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div>
-             </div>
-			</a>
-          </div>
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-			<a href="add-testimonials.php" class="small-box-footer">
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3>ADD Terminals</h3>
-
-                <p>Add</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div>
-             </div>
-			</a>
-          </div>
-
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-			<a href="Managebook.php" class="small-box-footer">
-            <div class="small-box bg-success">
-              <div class="inner">
-                <h3>Booking</h3>
-                <span class="info-box-number"><?php
-                                                      echo $comp = $con->query("SELECT COUNT(*) as bookcode
-                                                      FROM users")->num_rows;
-                                                    ?></span>
-                                                    
-                <p>View</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div>
-             </div>
-			</a>
-          </div>
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-			<a href="userReport.php" class="small-box-footer">
-            <div class="small-box bg-secondary">
-              <div class="inner">
-                <h3>Users</h3>
-                <span class="info-box-number">
-                                                    
-                <p>View</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div>
-             </div>
-			</a>
-          </div>
         </div>
         <!-- /.row -->
         <!-- Main row -->

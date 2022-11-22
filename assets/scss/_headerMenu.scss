@@ -2,12 +2,7 @@
 .header-area {
     .main-header {
         padding: 0px 130px;
-        @media #{$laptop}{
-            padding: 0px 30px;
-        }
-        @media #{$lg}{
-            padding: 0px 15px;
-        }
+    
         // mobile menu show
         @media #{$md}{
             padding: 22px 50px;
@@ -15,72 +10,10 @@
         @media #{$sm}{
             padding: 22px 20px;
          }
-        @media #{$xs}{
-            padding: 22px 14px;
-         }
+    
 
         //!  Menu
-         .main-menu{
-            @media #{$laptop}{
-               margin-right: 30px;
-            }
-            & ul{
-                & li{
-                    display: inline-block;
-                    position: relative;
-                    z-index: 1;
-    
-                    & a{
-                        color: #112957;
-                        font-weight: 400;
-                        padding: 39px 27px;
-                        display: block;
-                        font-size: 16px;
-                        @include transition(.3s);
-                        text-transform: capitalize;
-                        position: relative;
-                        font-family: $font_3;
-                        @media #{$lg}{
-                            padding: 39px 15px;
-                        }
-                    }
-                    &:hover{
-                        & > a{
-                            color:$theme-color;
-                        }
-                    }
-                }
-                & ul.submenu{
-                    position: absolute;
-                    width: 170px;
-                    background: rgba(255, 255, 255, 0.9);
-                    left: 0;
-                    top: 80%;
-                    visibility: hidden;
-                    opacity: 0;
-                    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.05);
-                    padding: 17px 0;
-                    // border-top: 5px solid $theme-color;
-                    @include transition(.3s);
-                    & > li{
-                        margin-left: 7px;
-                        display: block;
-                        & > a{
-                            padding: 6px 10px !important;
-                            font-size: 16px;
-                            text-transform: capitalize;
-                            margin: 0;
-                            &:hover{
-                                color:$theme-color;
-                                background: none;
-                            }
-                        }
-                    } 
-                }
-            }
-        }
-    }
-}
+    }}
 
 //! SubMenu Hover
 .header-area .main-menu ul ul.submenu > li > a:hover {
@@ -122,9 +55,7 @@
                 @media #{$sm}{
                     padding: 15px 0px;
                 }
-                @media #{$xs}{
-                    padding: 15px 0px;
-                } 
+              
             }
         }
     }
@@ -139,7 +70,7 @@
             background: transparent;
             margin-top: 0px !important;
             .slicknav_btn {
-                top: -27px;
+               
                 // mobile Menu button color
                 .slicknav_icon-bar {
                     background-color: $theme-color !important;

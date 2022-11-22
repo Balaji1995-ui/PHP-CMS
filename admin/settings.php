@@ -1,7 +1,7 @@
 <?php
 include 'conn.php';
 include 'auth.php';
-
+// error_reporting(0);
 $a=2;
 ?>
 <!DOCTYPE html>
@@ -58,7 +58,7 @@ if($_FILES['header_logo']['name']!=''){
     $header_logo = $roww["header_logo"];
   }
   $tempname = $_FILES['header_logo']['tmp_name'];
-  $folder = "../assets/img/logo/".$header_logo;
+  $folder = "../img/".$header_logo;
 
 
         // Insert image file name into database 
@@ -70,7 +70,7 @@ if($_FILES['header_logo']['name']!=''){
             $title_logo = $roww["title_logo"];
           }
           $tempname3 = $_FILES['title_logo']['tmp_name'];
-          $folder3 = "../assets/img/".$title_logo;      
+          $folder3 = "../img/".$title_logo;      
                                 
 
 
@@ -81,7 +81,7 @@ else{
 	$footer_logo = $roww["footer_logo"];
 }
 $tempname2 = $_FILES['footer_logo']['tmp_name'];
-$folder2 = "../assets/img/logo/".$footer_logo;
+$folder2 = "../img/".$footer_logo;
 // footer logo end ///
 
 
@@ -90,7 +90,7 @@ if($edit==''){
 move_uploaded_file($tempname, $folder);
 move_uploaded_file($tempname2, $folder2);
 move_uploaded_file($tempname3, $folder3);
-$insertdata = mysqli_query($con,"INSERT INTO settings(title_logo,site_name,phone,email,phone2,New_letter ,copyr,footer_desc,address,city,state,country,pin,header_logo,footer_logo,facebook,twitter,linkedin,instagram,youtube,map ,New_letter,fot_about)VALUES( '$title_logo','$site_name','$phone','$email','$footer_desc','$address','$city','$state','$country',$copyr,'$pin','$header_logo','$footer_logo','$facebook','$twitter','$linkedin','$instagram','$youtube','$map','$fot_about','$phone2','$New_letter')");
+$insertdata = mysqli_query($con,"INSERT INTO settings( header_logo, email, footer_logo, facebook, twitter, linkedin, instagram, youtube, address, city, state, country, site_name, copyr, title_logo)VALUES(  '$title_logo','$site_name','$email','$address','$city','$state','$country',$copyr,'$header_logo','$footer_logo','$facebook','$twitter','$linkedin','$instagram','$youtube')");
 
 echo "<script>alert('Posted Successfully');</script>
 	<script>window.location.href = 'settings.php'</script>";
@@ -99,7 +99,7 @@ else{
 move_uploaded_file($tempname, $folder);
 move_uploaded_file($tempname2, $folder2);
 move_uploaded_file($tempname3, $folder3);
-$insertdata = mysqli_query($con,"UPDATE settings SET site_name='$site_name',phone='$phone',email='$email',footer_desc='$footer_desc',address='$address',city='$city',state='$state',country='$country',pin='$pin',header_logo='$header_logo',footer_logo='$footer_logo',facebook='$facebook',twitter='$twitter',phone2='$phone2' ,copyr='$copyr',linkedin='$linkedin',instagram='$instagram',youtube='$youtube',map='$map',fot_about='$fot_about',New_letter='$New_letter',title_logo='$title_logo' where id=".$edit."");
+$insertdata = mysqli_query($con,"UPDATE settings SET  site_name='$site_name',email='$email',address='$address',header_logo='$header_logo',footer_logo='$footer_logo',facebook='$facebook',twitter='$twitter' ,copyr='$copyr',linkedin='$linkedin',instagram='$instagram',youtube='$youtube',title_logo='$title_logo' where id=".$edit."");
 echo "<script>alert('Updated Successfully');</script>
 	<script>window.location.href = 'settings.php'</script>";
 }
@@ -136,26 +136,26 @@ echo "<script>alert('Updated Successfully');</script>
                  <input name="site_name" value="<?php echo $roww["site_name"]; ?>" type="text" class="form-control" placeholder="Enter ...">
                 </div>
             </div>
-            	<div class="card-header">
+            	<!-- <div class="card-header">
              <div class="form-group">
                   <label>Phone</label>
                  <input name="phone" value="<?php echo $roww["phone"]; ?>" type="text" class="form-control" placeholder="Enter ...">
                 </div>
-            </div>
+            </div> -->
             	<div class="card-header">
              <div class="form-group">
                   <label>Company Email</label>
                  <input name="email" value="<?php echo $roww["email"]; ?>" type="text" class="form-control" placeholder="Enter ...">
                 </div>
             </div>
-             <div class="card-header">
+             <!-- <div class="card-header">
              <div class="form-group">
                   <label>Map</label>
                 <textarea name="map" class="form-control" placeholder="Enter Iframe Code">
                     <?php echo $roww["map"]; ?>
                 </textarea>
                 </div>
-            </div>
+            </div> -->
             
 			<!--<div class="card-body pad">
 			<label>Footer Description</label>
@@ -170,14 +170,14 @@ echo "<script>alert('Updated Successfully');</script>
                  <input name="address" value="<?php echo $roww["address"]; ?>" type="text" class="form-control" placeholder="Enter ...">
                 </div>
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <label>Footer New letter</label>
                  <input name="footer_desc" value="<?php echo $roww["footer_desc"]; ?>" type="text" class="form-control" placeholder="Enter ...">
                 </div>
                 <div class="form-group">
                   <label>Footer About</label>
                  <input name="fot_about" value="<?php echo $roww["fot_about"]; ?>" type="text" class="form-control" placeholder="Enter Footer ABOUT...">
-                </div>
+                </div> -->
                 <div class="form-group">
                   <label>Copyrights Name</label>
                  <input name="copyr" value="<?php echo $roww["copyr"]; ?>" type="text" class="form-control" placeholder="Enter Copyrights...">
@@ -194,6 +194,10 @@ echo "<script>alert('Updated Successfully');</script>
                   <label>Site Logo</label>
                  <input name="title_logo" value="<?php echo $roww["title_logo"]; ?>" type="file" class="form-control" placeholder="Upload title Logo....">
                 </div>
+                <!-- <div class="form-group">
+                  <label>Home Page Video</label>
+                 <input name="video" value="<?php echo $roww["video"]; ?>" type="text" class="form-control" placeholder="Upload title Logo....">
+                </div> -->
             </div>
            
           </div>
@@ -236,30 +240,30 @@ echo "<script>alert('Updated Successfully');</script>
             </div>
            
             <div class="card-header">
-             <div class="form-group">
+             <!-- <div class="form-group">
                   <label>Contact Page -PhoneNumber</label>
                  <input name="phone2" value="<?php echo $roww["phone2"]; ?>" type="text" class="form-control" placeholder="phoneNumber2">
-                </div>
-                <div class="form-group">
+                </div> -->
+                <!-- <div class="form-group">
                   <label>Contact Page -Enquiry Email</label>
                  <input name="New_letter" value="<?php echo $roww["New_letter"]; ?>" type="text" class="form-control" placeholder="phoneNumber2">
-                </div>
-                <div class="form-group">
+                </div> -->
+                <!-- <div class="form-group">
                   <label>Contact Page -Address</label>
                  <input name="city" value="<?php echo $roww["city"]; ?>" type="text" class="form-control" placeholder="Address">
-                </div>
-                <div class="form-group">
+                </div> -->
+                <!-- <div class="form-group">
                   <label>Contact Page -Country</label>
                  <input name="country" value="<?php echo $roww["country"]; ?>" type="text" class="form-control" placeholder="Country,city">
-                </div>
-                <div class="form-group">
+                </div> -->
+                <!-- <div class="form-group">
                   <label>Contact Page -pincode</label>
                  <input name="pin" value="<?php echo $roww["pin"]; ?>" type="text" class="form-control" placeholder="Pincode">
-                </div>
-                <div class="form-group">
+                </div> -->
+                <!-- <div class="form-group">
                   <label>Contact Page -Working Hours</label>
                  <input name="state" value="<?php echo $roww["state"]; ?>" type="text" class="form-control" placeholder="Mon to Fri 9am to 6pm">
-                </div>
+                </div> -->
          
             </div>
           

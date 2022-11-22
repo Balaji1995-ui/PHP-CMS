@@ -39,7 +39,7 @@ $a=3;
  date_default_timezone_set('Asia/Kolkata');
 $today = date("D d M Y");
 $edit = $_GET['edit'];
- $resultt = mysqli_query($con,"SELECT * FROM  services  where id='".$edit."'");
+ $resultt = mysqli_query($con,"SELECT * FROM tbl_plan_detail  where id='".$edit."'");
  $roww = mysqli_fetch_array($resultt);
 // $edit = $_GET['edit'];
 // $resultt = mysqli_query($con,"SELECT * FROM services where id=".$edit."");
@@ -47,19 +47,24 @@ $edit = $_GET['edit'];
 
 if(isset($_POST['publise'])){
 	
-$title1 = $_POST['title'];
+$title1 = $_POST['Proj_title'];
 $title2 = str_replace("'","\'", $title1);
 $title = str_replace("&","\and", $title2);
+$Invest_Money =$_POST['Invest_Money'];
+$cycle=$_POST['cycle'];
+$days_return=$_POST['days_return'];
+$total_revenue=$_POST['total_revenue'];
+// $create_time=$_POST[];
 
-$category = $_POST['category'];
-$short1 = $_POST['short'];
-$short = str_replace("'","\'", $short1);
-$descrip1 = $_POST['descrip'];
-$descrip = str_replace("'","\'", $descrip1);
-$minimum = $_POST['mini_Guest'];
-$maximum = $_POST['max_Guest'];
-$date = $_POST['Create_date'];
-$Venue = $_POST['Venue'];
+// $category = $_POST['category'];
+// $short1 = $_POST['short'];
+// $short = str_replace("'","\'", $short1);
+// $descrip1 = $_POST['descrip'];
+// $descrip = str_replace("'","\'", $descrip1);
+// $minimum = $_POST['mini_Guest'];
+// $maximum = $_POST['max_Guest'];
+// $date = $_POST['Create_date'];
+// $Venue = $_POST['Venue'];
 if($_FILES['img']['name']!=''){
     $img = rand().$_FILES['img']['name'];
     }
@@ -67,20 +72,20 @@ if($_FILES['img']['name']!=''){
       // $post_logo = $edit["post_logo"];
     }
     $tempname = $_FILES['img']['tmp_name'];
-    $folder = "../assets/img/logo/".$img;
+    $folder = "../img/plan/".$img;
 
 if($edit==''){
 
 move_uploaded_file($tempname, $folder);
 
-$insertdata = mysqli_query($con,"INSERT INTO services(Venue,title,category,descrip,img,date,short,status,max_Guest,mini_Guest,Create_time)VALUES('$Venue','$category','$title','$short','$descrip','$img','$today','0','$maximum','$minimum','$date')");
+$insertdata = mysqli_query($con,"INSERT INTO tbl_plan_detail (`Proj_title`,`Invest_Money`, `cycle`, `days_return`, `total_revenue`,`img`)VALUES('$title', '$Invest_Money', '$cycle', '$days_return', '$total_revenue','$img')");
 echo "<script>alert('Posted Successfully');</script>
 	<script>window.location.href = 'add-services.php'</script>";
 }
 else{
 move_uploaded_file($tempname, $folder);
 
-$insertdata = mysqli_query($con,"UPDATE services SET mini_Guest='$minimum',max_Guest='$maximum',Create_time='$date', category='$category',Venue='$Venue', title='$title',short='$short',descrip='$descrip',img='$img',date='$today' where id=".$edit."");
+$insertdata = mysqli_query($con,"UPDATE tbl_plan_detail SET Proj_title='$title', Invest_Money='$Invest_Money', cycle='$cycle', days_return='$days_return', total_revenue='$total_revenue',img='$img' where id=".$edit."");
 echo "<script>alert('Updated Successfully');</script>
 	<script>window.location.href = 'add-services.php'</script>";
 }
@@ -97,10 +102,10 @@ echo "<script>alert('Updated Successfully');</script>
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>EVENT REG</h1>
+            <h1>Plan Register</h1>
           </div>
            <div class="col-sm-6">
-          <a href="view-services.php" class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i>  View Events</a>
+          <a href="view-services.php" class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i>  View Plans</a>
           </div>
 
         </div>
@@ -116,22 +121,22 @@ echo "<script>alert('Updated Successfully');</script>
             
 			 
 			<div class="card-header">
-             <div class="form-group">
-                  <label>Enter Title</label>
-                 <input name="title" value="<?php echo $roww["title"]; ?>" type="text" class="form-control" placeholder="Enter ...">
+             <!-- <div class="form-group">
+                  <label>Plan Title</label>
+                 <input name="Proj_title" value="<?php echo $roww["Proj_title"]; ?>" type="text" class="form-control" placeholder="Enter ...">
                 </div>
-            </div>
+            </div> -->
             
             <div class="card-header">
              <div class="form-group">
                   <label>Select Category</label>
-                  <select name="category" class="form-control">
+                  <select name="Proj_title" class="form-control">
                       <option>Select...</option>
                       <?php 
-                      $location = mysqli_query($con,"SELECT * FROM EventCategory"); 
+                      $location = mysqli_query($con,"SELECT * FROM plancategory"); 
                       while ($location_ft = mysqli_fetch_array($location)) {   
                       ?>
-                      <option <?php if($roww["category"]==$location_ft["Event_name"]){ echo 'selected'; } ?> value="<?php echo $location_ft["Event_name"]; ?>"><?php echo $location_ft["Event_name"]; ?></option>
+                      <option <?php if($roww["Proj_title"]==$location_ft["plan_name"]){ echo 'selected'; } ?> value="<?php echo $location_ft["plan_name"]; ?>"><?php echo $location_ft["plan_name"]; ?></option>
                       <?php
                 		}
                 	   ?>
@@ -140,26 +145,26 @@ echo "<script>alert('Updated Successfully');</script>
             </div>
             <div class="card-header">
              <div class="form-group">
-                  <label>Venue</label>
-                 <input name="Venue" value="<?php echo $roww["Venue"]; ?>" type="text" class="form-control" placeholder="Enter Venue Details">
+                  <label>Invest_Money</label>
+                 <input name="Invest_Money" value="<?php echo $roww["Invest_Money"]; ?>" type="text" class="form-control" placeholder="Enter Invest_Money">
                 </div>
             </div>
             <div class="card-header">
              <div class="form-group">
-                  <label>Minimum Guest</label>
-                 <input name="mini_Guest" value="<?php echo $roww["mini_Guest"]; ?>" type="text" class="form-control" placeholder="Enter Minimum Guest">
+                  <label>Cycle</label>
+                 <input name="cycle" value="<?php echo $roww["cycle"]; ?>" type="text" class="form-control" placeholder="Enter cycle">
                 </div>
             </div>
             <div class="card-header">
              <div class="form-group">
-                  <label>Maximum Guest</label>
-                 <input name="max_Guest" value="<?php echo $roww["max_Guest"]; ?>" type="text" class="form-control" placeholder="Enter Maximum Guest">
+                  <label>Days_return</label>
+                 <input name="days_return" value="<?php echo $roww["days_return"]; ?>" type="text" class="form-control" placeholder="Enter days_return">
                 </div>
             </div>
             <div class="card-header">
              <div class="form-group">
-                  <label>Date</label>
-                 <input name="Create_date" value="<?php echo $roww["Create_date"]; ?>" type="date" class="form-control" placeholder="Enter Maximum Guest">
+                  <label>Total_revenue</label>
+                 <input name="total_revenue" value="<?php echo $roww["total_revenue"]; ?>" type="text" class="form-control" placeholder="Enter total_revenue">
                 </div>
             </div>
             <!-- <div class="card-body pad">
@@ -169,14 +174,14 @@ echo "<script>alert('Updated Successfully');</script>
               </div>
             </div> -->
             	
-			<div class="card-body pad">
+			<!-- <div class="card-body pad">
 			<label>Full Description</label>
               <div class="mb-3">
                 <textarea name="descrip" class="textarea" placeholder="Place some text here"
                type="text"
                           style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><?php echo $roww["descrip"]; ?></textarea>
               </div>
-            </div>
+            </div> -->
 			<div class="card-header">
 			<div class="form-group">
                     <label for="exampleInputFile">Select Img<span style="color:red;">(only compresed)</span></label>

@@ -1,16 +1,15 @@
 <?php
-error_reporting(0);
 include 'conn.php';
 include 'auth.php';
-
+// error_reporting(0);
 $a=11;
 ?>
-
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <?php include "title.php"; ?>
+ <?php include "title.php"; ?>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -35,65 +34,42 @@ $a=11;
   <?php include "sidebar.php"; ?>
 
 <?php
+
+
+
+
+
+// $_GET['delete_id'];
 if(isset($_GET['delete_id']))
 {
- $query_delete="DELETE FROM media WHERE id='".$_GET['delete_id']."'";
+ $query_delete="DELETE FROM users WHERE id='".$_GET['delete_id']."'";
  $p = mysqli_query($con, $query_delete);
  echo "<script>alert('Deleted Successfully');</script>
-	<script>window.location.href ='recentPost.php'</script>";
-} 
-
-
-$edit = $_GET['edit'];
- $resultt = mysqli_query($con,"SELECT * FROM media where id='".$edit."'");
- $roww = mysqli_fetch_array($resultt);
-$location = mysqli_query($con,"SELECT * FROM media");
-
-
-if(isset($_POST['add'])){
-	
-$post_header = $_POST['post_header'];
-$Post = $_POST['Post'];
-$date = $_POST['date'];
-
-if($_FILES['post_logo']['name']!=''){
-    $post_logo = rand().$_FILES['post_logo']['name'];
-    }
-    else{
-      // $post_logo = $edit["post_logo"];
-    }
-    $tempname = $_FILES['post_logo']['tmp_name'];
-    $folder = "../assets/img/logo/".$post_logo;
-
-
-    if($edit==''){
-
-      move_uploaded_file($tempname, $folder);
-  
-      $insertdata = mysqli_query($con,"INSERT INTO media(file_name, Post, post_header, post_logo,date)VALUES('$file_name', '$Post', '$post_header', '$post_logo','$date' )");
-      
-      echo "<script>alert('Posted Successfully');</script>
-        <script>window.location.href = 'recentPost.php'</script>";
-      }
-      else{
-      move_uploaded_file($tempname, $folder);
-
-      $insertdata = mysqli_query($con,"UPDATE media SET date='$date',Post='$Post',post_header='$post_header',post_logo='$post_logo' where id=".$edit."");
-      echo "<script>alert('Updated Successfully');</script>
-        <script>window.location.href = 'RecentPost.php'</script>";
-      }
-      
-
-
+	<script>window.location.href = 'Managebook.php'</script>";
 }
+// else{
+
+//     $query_update="update users set status="$status" id='".$_GET['id']."'";
+//     $p = mysqli_query($con, $query_update);
+//     echo "<script>alert('updated Successfully');</script>"
+// }
 
 
+$limit = 10;  
+if (isset($_GET["page"])) {
+	$page  = $_GET["page"]; 
+	} 
+	else{ 
+	$page=1;
+	};  
+$serial = ($page-1) * $limit; 
+
+  
+    $resultt = mysqli_query($con,"SELECT * FROM bank_details  ORDER BY id DESC LIMIT $serial, $limit");
 
 
 ?>
 
-     
-	
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -101,111 +77,156 @@ if($_FILES['post_logo']['name']!=''){
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Add Recent Post</h1>
+            <h1>Bank Details</h1>
           </div>
+          <!-- <div class="col-sm-6" style="text-align:right;">
+            <a class="btn btn-primary" href="add-services.php">
+            <i class="fa fa-plus" aria-hidden="true"></i> Add New</a>
+          </div> -->
 
         </div>
+        <div class="row">
+        <div class="col-md-9" >
+          <!-- <input class="form-control" name="" id="search" placeholder="search.."></input> -->
+          </div>
+          <div class="col-md-3" >
+           <input class="form-control" name="search" id="search" placeholder="search.."></input> 
+          </div>
+          </div>
       </div><!-- /.container-fluid -->
     </section>
 
     <!-- Main content -->
     <section class="content">
       <div class="row">
-        <div class="col-md-5">
-   
-		<form action="" method="post" enctype="multipart/form-data">
-          <div class="card card-outline card-info">
-           
-			
-			<div class="card-header">
-    
-             <div class="form-group">
-                  <label>Enter Title Poster</label>
-  
-                 <input type="text" name="post_header" value="<?php echo $roww["post_header"]; ?>" class="form-control" placeholder="Enter ...">
-                </div>
-                <div class="form-group">
-                  <label>Story</label>
-  
-                 <input type="text" name="Post" value="<?php echo $roww["Post"]; ?>" class="form-control" placeholder="Enter ...">
-                </div>
-                <div class="form-group">
-                  <label>Date</label>
-  
-                 <input type="datetime-local" name="date" value="<?php echo $roww["date"]; ?>" class="form-control" placeholder="Enter ...">
-                </div>
-                <div class="form-group">
-                  <label>Poster Image</label>
-  
-                 <input type="file" name="post_logo" value="<?php echo $roww["post_logo"]; ?>" class="form-control" placeholder="Enter ...">
-                </div>
-               
+        <div class="col-md-12">
+          <div class="card card-info">
+            <div class="card-header ">
+              <h3 class="card-title">Bank Details</h3>
+
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                  <i class="fas fa-minus"></i></button>
+              </div>
             </div>
-			<button type="submit" name="add" class="btn btn-block btn-primary btn-lg">Add</button>
-			
-          </div>
-         
-		   </form>
-     
-        </div>
-      
-		<div class="col-md-7"  >
-		<form action="" method="post" enctype="multipart/form-data">
-          <div class="card card-outline card-info">
-            <div class="card-header">
-             <div class="form-group">
-                  <label>RecentPost View</label>
-                 
-                </div>
-            </div>
-			
-			<div class="card-header">
-             <table class="table">
-                <thead>
-                  <tr>
-                  <th>poster</th>
-                    <th>PostName</th>
-                    <th>Story</th>
-                 
+            <div class="card-body p-0 ">
+              <table class="table " id="myTable">
+                <thead class="w-75">
+                <tr>
+                    <th>Id</th>
+                    <th>Customer Name</th>
+                    <th>Member_ID</th>
+                    <th>Bank Account</th>
+                    <th>Bank Name</th>
+                    <th >IFSC Code</th>
+                
+              
+          
                   </tr>
                 </thead>
                 <tbody>
-                
-		<?php  
-		while ($location_ft = mysqli_fetch_array($location)) { 
-		?>
-				  <tr>
-          <td> <img style="width:150px;"src="../assets/img/logo/<?php echo $location_ft["post_logo"] ?>"/></td>
-         
-          <td ><?php echo $location_ft["Post"]; ?></td>
-          
-                    <td><?php echo $location_ft["post_header"]; ?></td>
-
-                    <td class="text-right py-0 align-middle">
+				<?php  
+			while ($roww = mysqli_fetch_array($resultt)) { 	
+			?> 
+				  <tr >
+					<!-- <td><img style="width:100px;" src="../assets/img/logo/<?php echo $roww["img"]; ?>"></td> -->
+          <td><?php echo $roww["id"]; ?></td>
+                    <td><?php echo $roww["name"]; ?></td>
+                    <td><?php echo $roww["phone"]; ?></td>
+                    <td><?php echo $roww["bank_acc"]; ?></td>
+                    <td><?php echo $roww["bank"]; ?></td>
+                    <td ><?php echo $roww["ifsc"]; ?></td>
+                   
+               
+           
+				
+                    <!-- <td class="text-right py-0 align-middle">
                       <div class="btn-group btn-group-sm">
-						<a href="recentPost.php?edit=<?php echo $location_ft["id"]; ?>" onclick="return confirm('Are you sure?')"class="btn btn-info"><i class="fas fa-edit"></i></a>
-                        <a href="recentPost.php?delete_id=<?php echo $location_ft["id"]; ?>" onclick="return confirm('Are you sure?')" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+						<a  data-toggle="modal" data-target="#myModal" href="Managebook.php?edit=<?php echo $roww["id"]; ?>" onclick="return confirm('Are you sure?')"  class="btn btn-info"><i class="fas fa-edit"></i></a>
+                        <a href="Managebook.php?delete_id=<?php echo $roww["id"]; ?>" onclick="return confirm('Are you sure?')" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                       </div>
-                    </td>
+                    </td> -->
                 </tr>
-		<?php
-		}
-		?>
+			<?php 
+			$serial++;
+			} 
+			?>
 				</tbody>
               </table>
             </div>
-			
+
+            <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"></h4>
+        </div>
+        <div class="modal-body">
+
+      <form method="post" action="status.php">
+        
+        <div class="card-header">
+             <div class="form-group">
+           
+                 
+                <input class="form-control" name="name"  type="text" class="form-control" placeholder="customer Name">
+                   
+      </input>
+                </div>
+                <div class="form-group">
+           
+                 
+           <input class="form-control" name="status"  type="text" class="form-control" placeholder="Status">
+              
+ </input>
+           </div>
+              
+                 <input type="submit"  name="submit" class="btn-success"></input>
+<!-- <a  href="Signup.php" type="button" class="btn-danger">Sign Up</a> -->
+            </div>
+</form>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button  text-dark" class="bg-warning" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+
+
+
+
+
+	
+            <!-- /.card-body -->
           </div>
-		   </form>
         </div>
         <!-- /.col-->
+
       </div>
+      <?php  
+                          
+                          $result_db = mysqli_query($con,"SELECT COUNT(id) FROM users");
+                        
+                        $row_db = mysqli_fetch_row($result_db);  
+                        $total_records = $row_db[0];  
+                        $total_pages = ceil($total_records / $limit); 
+                        /* echo  $total_pages; */
+                        $pagLink = "<ul class='pagination'>";  
+                        for ($i=1; $i<=$total_pages; $i++) {
+                                $pagLink .= "<li class='page-item'><a class='page-link' href='UserReport.php?page=".$i."'>".$i."</a></li>";	
+                        }
+                        echo $pagLink . "</ul>";  
+                         ?>
       <!-- ./row -->
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-   <?php include"footer.php"; ?>
+ <?php include"footer.php"; ?>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -225,6 +246,38 @@ if($_FILES['post_logo']['name']!=''){
 <script src="dist/js/demo.js"></script>
 <!-- Summernote -->
 <script src="plugins/summernote/summernote-bs4.min.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+$('#search').keyup(function(){
+search_table($(this).val());
+
+
+});
+function search_table(value){
+  $('#myTable tr').each(function(){
+var found='false';
+$(this).each(function(){
+if($(this).text().toLowerCase().indexOf(value.toLowerCase())> 0){
+
+  found='true';
+}
+});
+if(found=='true'){
+  $(this).show();
+}
+else{
+ $(this).hide();
+//  window.location.reload();
+  
+}
+
+  })
+}
+
+  })
+
+</script>
 <script>
   $(function () {
     // Summernote

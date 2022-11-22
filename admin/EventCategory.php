@@ -37,7 +37,7 @@ $a=13;
 <?php
 if(isset($_GET['delete_id']))
 {
- $query_delete="DELETE FROM EventCategory WHERE id='".$_GET['delete_id']."'";
+ $query_delete="DELETE FROM plancategory WHERE id='".$_GET['delete_id']."'";
  $p = mysqli_query($con, $query_delete);
  echo "<script>alert('Deleted Successfully');</script>
 	<script>window.location.href = 'EventCategory.php'</script>";
@@ -45,24 +45,24 @@ if(isset($_GET['delete_id']))
 
 
 $edit = $_GET['edit'];
- $resultt = mysqli_query($con,"SELECT * FROM EventCategory where id='$edit'");
+ $resultt = mysqli_query($con,"SELECT * FROM plancategory where id='$edit'");
  $roww = mysqli_fetch_array($resultt);
-$location = mysqli_query($con,"SELECT * FROM EventCategory");
+$location = mysqli_query($con,"SELECT * FROM plancategory");
 
 
 if(isset($_POST['add'])){
 	
-$name = $_POST['Event_name'];
+$name = $_POST['plan_name'];
 
 if($edit==''){
 
-$insertdata = mysqli_query($con,"INSERT INTO EventCategory(Event_name)VALUES('$name')");
+$insertdata = mysqli_query($con,"INSERT INTO plancategory(plan_name)VALUES('$name')");
 echo "<script>alert('Added Successfully');</script>
 	<script>window.location.href = 'EventCategory.php'</script>";
 }
 else{
 
-$insertdata = mysqli_query($con,"UPDATE EventCategory SET Event_name='$name' where id=".$edit."");
+$insertdata = mysqli_query($con,"UPDATE plancategory SET plan_name='$name' where id=".$edit."");
 echo "<script>alert('Updated Successfully');</script>
 	<script>window.location.href = 'EventCategory.php'</script>";
 }
@@ -105,7 +105,7 @@ echo "<script>alert('Updated Successfully');</script>
              <div class="form-group">
                   <label>Enter Category Name</label>
   
-                 <input type="text" name="Event_name" value="<?php echo $roww["Event_name"]; ?>" class="form-control" placeholder="Enter ...">
+                 <input type="text" name="plan_name" value="<?php echo $roww["plan_name"]; ?>" class="form-control" placeholder="Enter ...">
                 </div>
                
             </div>
@@ -142,7 +142,7 @@ echo "<script>alert('Updated Successfully');</script>
 		?>
 				  <tr>
 					
-                    <td><?php echo $location_ft["Event_name"]; ?></td>
+                    <td><?php echo $location_ft["plan_name"]; ?></td>
                     <td class="text-right py-0 align-middle">
                       <div class="btn-group btn-group-sm">
 						<a href="EventCategory.php?edit=<?php echo $location_ft["id"]; ?>" onclick="return confirm('Are you sure?')"class="btn btn-info"><i class="fas fa-edit"></i></a>

@@ -1,7 +1,7 @@
 <?php
 include 'conn.php';
 include 'auth.php';
-error_reporting(0);
+// error_reporting(0);
 $a=15;
 ?>
 <!DOCTYPE html>
@@ -65,7 +65,7 @@ if (isset($_GET["page"])) {
 $serial = ($page-1) * $limit; 
 
   
-    $resultt = mysqli_query($con,"SELECT * FROM users where email is not null  ORDER BY id DESC LIMIT $serial, $limit");
+    $resultt = mysqli_query($con,"SELECT * FROM orders where email is not null  ORDER BY id DESC LIMIT $serial, $limit");
 
 
 ?>
@@ -85,6 +85,14 @@ $serial = ($page-1) * $limit;
           </div> -->
 
         </div>
+        <div class="row">
+        <div class="col-md-9" >
+          <!-- <input class="form-control" name="" id="search" placeholder="search.."></input> -->
+          </div>
+          <div class="col-md-3" >
+           <input class="form-control" name="search" id="search" placeholder="search.."></input> 
+          </div>
+          </div>
       </div><!-- /.container-fluid -->
     </section>
 
@@ -102,19 +110,18 @@ $serial = ($page-1) * $limit;
               </div>
             </div>
             <div class="card-body p-0 ">
-              <table class="table ">
+              <table class="table " id="myTable">
                 <thead class="w-75">
-                  <tr>
+                <tr>
                     <th>Id</th>
-           
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th >Address</th>
-                    <th>City</th>
-                    <th>State</th>
-                
-                  
+                    <th>OrderID</th>
+                    <th>Razorpay_payment_id</th>
+                    <th>status</th>
+                    <th>phone</th>
+                    <th >plan price</th>
+                    <th>Transaction Date</th>
+              
+          
                   </tr>
                 </thead>
                 <tbody>
@@ -123,14 +130,14 @@ $serial = ($page-1) * $limit;
 			?> 
 				  <tr >
 					<!-- <td><img style="width:100px;" src="../assets/img/logo/<?php echo $roww["img"]; ?>"></td> -->
-                    <td><?php echo $roww["id"]; ?></td>
-                    <td><?php echo $roww["name"]; ?></td>
+          <td><?php echo $roww["id"]; ?></td>
+                    <td><?php echo $roww["order_id"]; ?></td>
+                    <td><?php echo $roww["razorpay_payment_id"]; ?></td>
+                    <td><?php echo $roww["status"]; ?></td>
                     <td><?php echo $roww["email"]; ?></td>
-                    <td><?php echo $roww["phone"]; ?></td>
-                    <td ><?php echo $roww["address"]; ?></td>
-                    <td ><?php echo $roww["city"]; ?></td>
-                    <td ><?php echo $roww["state"]; ?></td>
-           
+                    <td ><?php echo $roww["price"]; ?></td>
+                    <td ><?php echo $roww["transaction_date"]; ?></td>
+               
            
 				
                     <!-- <td class="text-right py-0 align-middle">
@@ -193,25 +200,27 @@ $serial = ($page-1) * $limit;
 
 
 
-			 <?php  
-                          
-		// 	$result_db = mysqli_query($con,"SELECT COUNT(id) FROM services");
-		
-		// $row_db = mysqli_fetch_row($result_db);  
-		// $total_records = $row_db[0];  
-		// $total_pages = ceil($total_records / $limit); 
-		// /* echo  $total_pages; */
-		// $pagLink = "<ul class='pagination'>";  
-		// for ($i=1; $i<=$total_pages; $i++) {
-		// 			  $pagLink .= "<li class='page-item'><a class='page-link' href='view-services.php?page=".$i."'>".$i."</a></li>";	
-		// }
-		// echo $pagLink . "</ul>";  
-		// ?>
+	
             <!-- /.card-body -->
           </div>
         </div>
         <!-- /.col-->
+
       </div>
+      <?php  
+                          
+                          $result_db = mysqli_query($con,"SELECT COUNT(id) FROM users");
+                        
+                        $row_db = mysqli_fetch_row($result_db);  
+                        $total_records = $row_db[0];  
+                        $total_pages = ceil($total_records / $limit); 
+                        /* echo  $total_pages; */
+                        $pagLink = "<ul class='pagination'>";  
+                        for ($i=1; $i<=$total_pages; $i++) {
+                                $pagLink .= "<li class='page-item'><a class='page-link' href='UserReport.php?page=".$i."'>".$i."</a></li>";	
+                        }
+                        echo $pagLink . "</ul>";  
+                         ?>
       <!-- ./row -->
     </section>
     <!-- /.content -->
@@ -237,6 +246,38 @@ $serial = ($page-1) * $limit;
 <script src="dist/js/demo.js"></script>
 <!-- Summernote -->
 <script src="plugins/summernote/summernote-bs4.min.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+$('#search').keyup(function(){
+search_table($(this).val());
+
+
+});
+function search_table(value){
+  $('#myTable tr').each(function(){
+var found='false';
+$(this).each(function(){
+if($(this).text().toLowerCase().indexOf(value.toLowerCase())> 0){
+
+  found='true';
+}
+});
+if(found=='true'){
+  $(this).show();
+}
+else{
+ $(this).hide();
+//  window.location.reload();
+  
+}
+
+  })
+}
+
+  })
+
+</script>
 <script>
   $(function () {
     // Summernote

@@ -9,9 +9,7 @@
     @media #{$sm}{
         height: 600px;
     }
-    @media #{$xs}{
-        height: 500px;
-    }
+ 
 }
 
 
@@ -24,9 +22,7 @@
     @media #{$sm}{
         height: 260px;
     }
-    @media #{$xs}{
-        height: 260px;
-    }
+   
 }
 .slider-area2{
     background-image: url(../img/hero/hero2.png);

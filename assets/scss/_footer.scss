@@ -13,9 +13,7 @@
         p{
             color:#868c98;
             padding-right: 52px;
-            @media #{$lg}{
-                padding-right: 0px;
-            }
+        
             @media #{$md}{
                 padding-right: 0px;
             }
@@ -122,9 +120,7 @@
             font-size: 16px;
             line-height: 2;
             margin-bottom: 12px;
-            @media #{$xs}{
-               margin-bottom: 20px;
-            }
+         
             @media #{$md}{
                 margin-bottom: 20px;
             }
@@ -145,9 +141,7 @@
         @media #{$sm}{
             float: left;
 		}
-        @media #{$xs}{
-            float: left;
-		}
+       
         @media #{$md}{
             float: left;
 		}
@@ -173,10 +167,7 @@
 .footer-wejed{
     padding-top: 120px;
     padding-bottom: 40px;
-    @media #{$lg}{
-        padding-top: 50px;
-        padding-bottom: 40px;
-    }
+  
     @media #{$md}{
         padding-top: 50px;
         padding-bottom: 40px;
@@ -185,8 +176,5 @@
         padding-top: 50px;
         padding-bottom: 40px;
     }
-    @media #{$xs}{
-        padding-top: 20px;
-        padding-bottom: 40px;
-    }
+   
 }

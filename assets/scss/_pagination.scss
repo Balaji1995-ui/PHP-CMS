@@ -1,18 +1,14 @@
 
 // Pagination Area
 .pagination-area{
-    @media #{$lg}{
-        padding-bottom: 50px;
-    }
+
     @media #{$md}{
         padding-bottom: 50px;
     }
     @media #{$sm}{
         padding-bottom: 50px;
     }
-    @media #{$xs}{
-        padding-bottom: 50px;
-    }
+
     .page-item {
         margin: 0;
     }

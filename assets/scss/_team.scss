@@ -1,8 +1,5 @@
 .team-area{
-    @media #{$lg}{
-        padding-top: 150px;
-        padding-bottom: 150px;
-    }
+
     @media #{$md}{
         padding-top: 100px;
         padding-bottom: 100px;
@@ -11,10 +8,7 @@
         padding-top: 70px;
         padding-bottom: 70px;
     }
-    @media #{$xs}{
-        padding-top: 70px;
-        padding-bottom: 0px;
-    }
+
     .single-team{
         .team-img {
             overflow: hidden;

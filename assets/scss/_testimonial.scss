@@ -1,8 +1,5 @@
 .testimonial-area{
-    @media #{$lg}{
-        padding-bottom: 150px;
-        padding-top: 150px;
-    }
+ 
     @media #{$md}{
         padding-bottom: 100px;
         padding-top: 100px;
@@ -11,10 +8,7 @@
         padding-top: 30px;
         padding-bottom: 70px;
     }
-    @media #{$xs}{
-        padding-top: 20px;
-        padding-bottom: 70px;
-    }
+  
     .testimonial-caption{
          p{
             font-size:23px;
@@ -23,11 +17,7 @@
                 padding: 0 0px;
                 font-size:17px;
             }
-            @media #{$xs}{
-                font-size:19px;
-                padding: 0 10px;
-                font-size:17px;
-            }
+        
             color: $heading_color;
             color:#ffff;
             line-height: 45px;

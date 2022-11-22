@@ -1,7 +1,7 @@
 <?php
 include 'conn.php';
 include 'auth.php';
-error_reporting(0);
+// error_reporting(0);
 $a=14;
 ?>
 <!DOCTYPE html>
@@ -65,7 +65,7 @@ if (isset($_GET["page"])) {
 $serial = ($page-1) * $limit; 
 
   
-    $resultt = mysqli_query($con,"SELECT * FROM users where bookcode is not null  ORDER BY id DESC LIMIT $serial, $limit");
+    $resultt = mysqli_query($con,"SELECT * FROM users where status is not null  ORDER BY id DESC LIMIT $serial, $limit");
 
 
 ?>
@@ -77,14 +77,25 @@ $serial = ($page-1) * $limit;
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Manage Booking</h1>
+            <h1>Withdrawal Request</h1>
           </div>
           <!-- <div class="col-sm-6" style="text-align:right;">
             <a class="btn btn-primary" href="add-services.php">
             <i class="fa fa-plus" aria-hidden="true"></i> Add New</a>
-          </div> -->
 
+            
+          </div> -->
+             
         </div>
+
+        <div class="row">
+        <div class="col-md-9" >
+          <!-- <input class="form-control" name="" id="search" placeholder="search.."></input> -->
+          </div>
+          <div class="col-md-3" >
+           <input class="form-control" name="search" id="search" placeholder="search.."></input>
+          </div>
+          </div>
       </div><!-- /.container-fluid -->
     </section>
 
@@ -94,7 +105,8 @@ $serial = ($page-1) * $limit;
         <div class="col-md-12">
           <div class="card card-info">
             <div class="card-header ">
-              <h3 class="card-title">Book Details</h3>
+              <h3 class="card-title">Request</h3>
+              
 
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -102,18 +114,16 @@ $serial = ($page-1) * $limit;
               </div>
             </div>
             <div class="card-body p-0 ">
-              <table class="table ">
+              <table class="table " id="myTable">
                 <thead class="w-75">
                   <tr>
                     <th>Id</th>
-                    <th>Booking ID</th>
-                    <th>name</th>
-                    <th>phone</th>
-                    <th>Category</th>
-                    <th >Tickets</th>
-                    <th>Date</th>
-                    <th>Venue</th>
-                    <th>Status</th>
+                    <th>member ID</th>
+                    <th>Date_request</th>
+                    <th>status</th>
+                    <th>Withdrew Request</th>
+              
+              
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -124,18 +134,14 @@ $serial = ($page-1) * $limit;
 				  <tr >
 					<!-- <td><img style="width:100px;" src="../assets/img/logo/<?php echo $roww["img"]; ?>"></td> -->
                     <td><?php echo $roww["id"]; ?></td>
-                    <td><?php echo $roww["bookcode"]; ?></td>
-                    <td><?php echo $roww["name"]; ?></td>
                     <td><?php echo $roww["phone"]; ?></td>
-                    <td ><?php echo $roww["Even_Category"]; ?></td>
-                    <td ><?php echo $roww["Event_Book_ticket"]; ?></td>
-                    <td ><?php echo $roww["BOOK_date"]; ?></td>
-                    <td ><?php echo $roww["Venue"]; ?></td>
-                    <td  class="bg-warning"><?php echo $roww["status"]; ?></td>
-					<!-- <td ><?php $dec = $roww['Venue'];
-								$removetag = strip_tags($dec);
-								$trim = $string = substr($removetag,0,600);
-								echo $trim ; ?>..</td> -->
+                    <td><?php echo $roww["on_order"]; ?></td>
+                    <td><?php echo $roww["status"]; ?></td>
+                    <td><?php echo $roww["withd"]; ?></td>
+           
+                
+                 
+			
                     <td class="text-right py-0 align-middle">
                       <div class="btn-group btn-group-sm">
 						<a  data-toggle="modal" data-target="#myModal" href="Managebook.php?edit=<?php echo $roww["id"]; ?>" onclick="return confirm('Are you sure?')"  class="btn btn-info"><i class="fas fa-edit"></i></a>
@@ -168,7 +174,7 @@ $serial = ($page-1) * $limit;
              <div class="form-group">
            
                  
-                <input class="form-control" name="name"  type="text" class="form-control" placeholder="customer Name">
+                <input class="form-control" name="name"  type="text" class="form-control" placeholder="member ID">
                    
       </input>
                 </div>
@@ -196,30 +202,33 @@ $serial = ($page-1) * $limit;
 
 
 
-			 <?php  
+			  
                           
-		// 	$result_db = mysqli_query($con,"SELECT COUNT(id) FROM services");
-		
-		// $row_db = mysqli_fetch_row($result_db);  
-		// $total_records = $row_db[0];  
-		// $total_pages = ceil($total_records / $limit); 
-		// /* echo  $total_pages; */
-		// $pagLink = "<ul class='pagination'>";  
-		// for ($i=1; $i<=$total_pages; $i++) {
-		// 			  $pagLink .= "<li class='page-item'><a class='page-link' href='view-services.php?page=".$i."'>".$i."</a></li>";	
-		// }
-		// echo $pagLink . "</ul>";  
-		// ?>
+			
             <!-- /.card-body -->
           </div>
         </div>
         <!-- /.col-->
       </div>
+      <?php 
+  $result_db = mysqli_query($con,"SELECT COUNT(id) FROM users");
+		
+		$row_db = mysqli_fetch_row($result_db);  
+		$total_records = $row_db[0];  
+		$total_pages = ceil($total_records / $limit); 
+		/* echo  $total_pages; */
+		$pagLink = "<ul class='pagination'>";  
+		for ($i=1; $i<=$total_pages; $i++) {
+					  $pagLink .= "<li class='page-item'><a class='page-link' href='Managebook.php?page=".$i."'>".$i."</a></li>";	
+		}
+		echo $pagLink . "</ul>";  
+		// ?>
       <!-- ./row -->
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
  <?php include"footer.php"; ?>
 
   <!-- Control Sidebar -->
@@ -240,6 +249,39 @@ $serial = ($page-1) * $limit;
 <script src="dist/js/demo.js"></script>
 <!-- Summernote -->
 <script src="plugins/summernote/summernote-bs4.min.js"></script>
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+$('#search').keyup(function(){
+search_table($(this).val());
+
+
+});
+function search_table(value){
+  $('#myTable tr').each(function(){
+var found='false';
+$(this).each(function(){
+if($(this).text().toLowerCase().indexOf(value.toLowerCase())> 0){
+
+  found='true';
+}
+});
+if(found=='true'){
+  $(this).show();
+}
+else{
+ $(this).hide();
+//  window.location.reload();
+  
+}
+
+  })
+}
+
+  })
+
+</script>
 <script>
   $(function () {
     // Summernote

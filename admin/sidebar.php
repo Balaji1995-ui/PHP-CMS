@@ -43,7 +43,7 @@
             <a href="EventCategory.php" class="nav-link <?php if($a==13){ echo 'active'; }?>">
                <i class="fa fa-plus nav-icon"></i>
               <p>
-                Add Event Category
+                Add  Plan Category
               </p>
             </a>
           </li> 
@@ -51,7 +51,7 @@
             <a href="add-services.php" class="nav-link <?php if($a==3){ echo 'active'; }?>">
                <i class="fa fa-plus nav-icon"></i>
               <p>
-               Add Events
+               Add Plans
               </p>
             </a>
           </li> 
@@ -59,7 +59,7 @@
             <a href="view-services.php" class="nav-link <?php if($a==4){ echo 'active'; }?>">
                <i class="fa fa-eye nav-icon"></i>
               <p>
-                View Events 
+                View Plans
               </p>
             </a>
           </li> 
@@ -82,8 +82,16 @@
               </p>
             </a>
           </li> 
+          <li class="nav-item has-treeview menu-open">
+            <a href="recentPost.php" class="nav-link <?php if($a==11){ echo 'active'; }?>">
+               <i class="fa fa-users nav-icon"></i>
+              <p>
+           Bank Details
+              </p>
+            </a>
+          </li> 
 		  
-		  <li class="nav-item has-treeview menu-open">
+		  <!-- <li class="nav-item has-treeview menu-open">
             <h5 class="pt-2 pb-2" style="color:white;">BLOG SECTION</h5>
 			</li>
 		  
@@ -94,8 +102,8 @@
                 Add Blog Category
               </p>
             </a>
-          </li> 
-		  <li class="nav-item has-treeview menu-open">
+          </li>  -->
+		  <!-- <li class="nav-item has-treeview menu-open">
             <a href="add-blog.php" class="nav-link <?php if($a==7){ echo 'active'; }?>">
                <i class="fa fa-plus nav-icon"></i>
               <p>
@@ -111,25 +119,33 @@
                 View Blog
               </p>
             </a>
-          </li> 
+          </li>  -->
 
-
+<!-- 
           <li class="nav-item has-treeview menu-open">
             <h5 class="pt-2 pb-2" style="color:white;">Header</h5>
-			</li>
-          <li class="nav-item has-treeview menu-open">
+			</li> -->
+          <!-- <li class="nav-item has-treeview menu-open">
             <a href="headDash.php" class="nav-link <?php if($a==12){ echo 'active'; }?>">
                <i class="fa fa-plus nav-icon"></i>
               <p>
               Home Page Management
               </p>
             </a>
+          </li> -->
+          <!-- <li class="nav-item has-treeview menu-open">
+            <a href="Gallery.php" class="nav-link <?php if($a==16){ echo 'active'; }?>">
+               <i class="fa fa-plus nav-icon"></i>
+              <p>
+            Gallery Page Management
+              </p>
+            </a>
           </li>
 		  <li class="nav-item has-treeview menu-open">
             <h5 class="pt-2 pb-2" style="color:white;">OTHER OPTIONS</h5>
-			</li>
+			</li> -->
         
-           <li class="nav-item has-treeview menu-open">
+           <!-- <li class="nav-item has-treeview menu-open">
             <a href="add-testimonials.php" class="nav-link <?php if($a==5){ echo 'active'; }?>">
                <i class="fa fa-plus nav-icon"></i>
               <p>
@@ -137,7 +153,7 @@
               </p>
             </a>
           </li> 
-          
+           -->
          <!-- <li class="nav-item has-treeview menu-open">
             <a href="faqs.php" class="nav-link <?php if($a==10){ echo 'active'; }?>">
                <i class="fa fa-plus nav-icon"></i>
@@ -146,7 +162,7 @@
               </p>
             </a>
           </li> -->
-          <li class="nav-item has-treeview menu-open">
+          <!-- <li class="nav-item has-treeview menu-open">
             <a href="recentPost.php" class="nav-link <?php if($a==11){ echo 'active'; }?>">
                <i class="fa fa-plus nav-icon"></i>
               <p>
@@ -154,7 +170,7 @@
               </p>
             </a>
           </li>
-     
+      -->
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

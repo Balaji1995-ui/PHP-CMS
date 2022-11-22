@@ -37,7 +37,7 @@ $a=4;
 // $_GET['delete_id'];
 if(isset($_GET['delete_id']))
 {
- $query_delete="DELETE FROM services WHERE id='".$_GET['delete_id']."'";
+ $query_delete="DELETE FROM tbl_plan_detail WHERE id='".$_GET['delete_id']."'";
  $p = mysqli_query($con, $query_delete);
  echo "<script>alert('Deleted Successfully');</script>
 	<script>window.location.href = 'view-services.php'</script>";
@@ -54,7 +54,7 @@ if (isset($_GET["page"])) {
 $serial = ($page-1) * $limit; 
 
   
-    $resultt = mysqli_query($con,"SELECT * FROM services ORDER BY id DESC LIMIT $serial, $limit");
+    $resultt = mysqli_query($con,"SELECT * FROM tbl_plan_detail ORDER BY id DESC LIMIT $serial, $limit");
 
 
 ?>
@@ -66,7 +66,7 @@ $serial = ($page-1) * $limit;
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>View Events</h1>
+            <h1>View Plans</h1>
           </div>
           <div class="col-sm-6" style="text-align:right;">
             <a class="btn btn-primary" href="add-services.php">
@@ -95,13 +95,13 @@ $serial = ($page-1) * $limit;
                 <thead class="w-75">
                   <tr>
                     <th>Photo</th>
-                    <th>Title</th>
-                    <th>Event Theme</th>
-                    <th class="pl-6">Minmum Guest</th>
-                    <th>Maximum Guest</th>
-                    <th>Date</th>
-                    <th>Venue</th>
-					<th>Description</th>
+                    <th>Plan Name</th>
+                    <th>Invest_Money</th>
+                    <th class="pl-6">Cycle</th>
+                    <th>Days_return</th>
+                    <th>Total_Revenue</th>
+                    <!-- <th>Venue</th>
+					<th>Description</th> -->
                     
                     <th>Action</th>
                   </tr>
@@ -111,17 +111,17 @@ $serial = ($page-1) * $limit;
 			while ($roww = mysqli_fetch_array($resultt)) { 	
 			?> 
 				  <tr>
-					<td><img style="width:100px;" src="../assets/img/logo/<?php echo $roww["img"]; ?>"></td>
-                    <td><?php echo $roww["title"]; ?></td>
-                    <td><?php echo $roww["category"]; ?></td>
-                    <td ><?php echo $roww["mini_Guest"]; ?></td>
-                    <td ><?php echo $roww["max_Guest"]; ?></td>
-                    <td class="w-25 p-3"><?php echo $roww["Create_time"]; ?></td>
-                    <td ><?php echo $roww["Venue"]; ?></td>
-					<td  class="w-0 p-3"><?php $dec = $roww['descrip'];
+					<td><img style="width:100px;" src="../assets/img/plan/<?php echo $roww["img"]; ?>"></td>
+                    <td><?php echo $roww["Proj_title"]; ?></td>
+                    <td><?php echo $roww["Invest_Money"]; ?></td>
+                    <td ><?php echo $roww["cycle"]; ?></td>
+                    <td ><?php echo $roww["days_return"]; ?></td>
+                    <td ><?php echo $roww["total_revenue"]; ?></td>
+                    <!-- <td ><?php echo $roww["Venue"]; ?></td> -->
+					<!-- <td  class="w-0 p-3"><?php $dec = $roww['descrip'];
 								$removetag = strip_tags($dec);
 								$trim = $string = substr($removetag,0,600);
-								echo $trim ; ?>..</td>
+								echo $trim ; ?>..</td> -->
                     <td class="text-right py-0 align-middle">
                       <div class="btn-group btn-group-sm">
 						<a href="add-services.php?edit=<?php echo $roww["id"]; ?>" onclick="return confirm('Are you sure?')"  class="btn btn-info"><i class="fas fa-edit"></i></a>
@@ -136,25 +136,27 @@ $serial = ($page-1) * $limit;
 				</tbody>
               </table>
             </div>
-			 <?php  
-                          
-			$result_db = mysqli_query($con,"SELECT COUNT(id) FROM services");
 		
-		$row_db = mysqli_fetch_row($result_db);  
-		$total_records = $row_db[0];  
-		$total_pages = ceil($total_records / $limit); 
-		/* echo  $total_pages; */
-		$pagLink = "<ul class='pagination'>";  
-		for ($i=1; $i<=$total_pages; $i++) {
-					  $pagLink .= "<li class='page-item'><a class='page-link' href='view-services.php?page=".$i."'>".$i."</a></li>";	
-		}
-		echo $pagLink . "</ul>";  
-		?>
             <!-- /.card-body -->
           </div>
         </div>
         <!-- /.col-->
+        <?php  
+                          
+                          $result_db = mysqli_query($con,"SELECT COUNT(id) FROM tbl_plan_detail");
+                        
+                        $row_db = mysqli_fetch_row($result_db);  
+                        $total_records = $row_db[0];  
+                        $total_pages = ceil($total_records / $limit); 
+                        /* echo  $total_pages; */
+                        $pagLink = "<ul class='pagination'>";  
+                        for ($i=1; $i<=$total_pages; $i++) {
+                                $pagLink .= "<li class='page-item'><a class='page-link' href='view-services.php?page=".$i."'>".$i."</a></li>";	
+                        }
+                        echo $pagLink . "</ul>";  
+                        ?>
       </div>
+
       <!-- ./row -->
     </section>
     <!-- /.content -->
