@@ -94,27 +94,27 @@ if(isset($_POST['publise'])){
     <form method="post" action="">
         <div class="form-group">
 <Label>Your Name</Label><sup class="text-danger">*</sup>
-<input type="text" class="form-control" name="name" placeholder ="Enter the Name" />
+<input type="text" class="form-control" minlength="5" name="name" placeholder ="Enter the Name" required />
 </div>
 <div class="form-group">
 <Label>Your Phone Number</Label><sup class="text-danger">*</sup>
-<input type="text" class="form-control" name="phone"  max="10"  placeholder ="Enter the PhoneNumber" />
+<input type="tel" class="form-control"  maxlength="10"   name="phone"  required  placeholder ="Enter the PhoneNumber" />
 </div>
 <div class="form-group">
 <Label>Bank Account Number</Label><sup class="text-danger">*</sup>
-<input type="text" class="form-control" name="bank_acc"  placeholder ="Enter the Account Number" />
+<input type="text" class="form-control" name="bank_acc" required  placeholder ="Enter the Account Number" />
 </div>
 <div class="form-group">
 <Label>Bank Name</Label><sup class="text-danger">*</sup>
-<input type="text" class="form-control" name="bank"  placeholder ="Enter the Bank Name" />
+<input type="text" class="form-control" name="bank" required  placeholder ="Enter the Bank Name" />
 </div>
 <div class="form-group">
 <Label>IFSC Code</Label><sup class="text-danger">*</sup>
-<input type="text" class="form-control" name="ifsc"  placeholder ="Enter the IFSC Code" />
+<input type="text" class="form-control" name="ifsc" required  placeholder ="Enter the IFSC Code" />
 </div>
 <div class="form-group">
 <Label>Withdraw Password</Label><sup class="text-danger">*</sup>
-<input type="text" class="form-control" name="wpassword"  placeholder ="Password" />
+<input type="password" class="form-control" name="wpassword" required  placeholder ="Password" />
 </div>
 
 <div class="form-group">

@@ -103,7 +103,7 @@ else{
 <hr>
 <div class="form-group">
 <input type="submit" name="submit" class="form-control btn btn-warning"> 
-       confrim Withdrawel
+
 </input>
 
 </div>

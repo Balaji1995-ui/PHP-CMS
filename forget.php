@@ -1,7 +1,7 @@
 <?php
 
 require './admin/conn.php';
-// error_reporting(0);
+error_reporting(0);
 date_default_timezone_set('Asia/Kolkata');
 
 $today = date("D d M Y");
@@ -28,9 +28,9 @@ if(isset($_POST['publise'])){
 
     
         //   move_uploaded_file($tempname, $folder);
-        $insertdata = mysqli_query($con,"UPDATE users set setting_login = '$setting_login' ,confirm_login = '$confirm_login' ,widthdrwa_login ='$widthdrwa_login' where id='phone'");
+        $insertdata = mysqli_query($con,"UPDATE users set setting_login = '$setting_login' ,confirm_login = '$confirm_login' ,widthdrwa_login ='$widthdrwa_login' where id='$phone'");
       //  $insertdata = mysqli_query($con, "INSERT INTO users ( name, email, password, address, city, state, img, status, phone, Event_Book_ticket, Even_Category, Venue, BOOK_date, bookcode, country, pincode)VALUES( '$name', '$email', '$password', '$address', '$city', '$state', '$phone','$country',$pincode')");
-        echo "<script>alert('SignUp Successfully');</script>
+        echo "<script>alert('Password Reset Successfully');</script>
             <script>window.location.href ='index.php'</script>";
        
 
@@ -42,7 +42,7 @@ if(isset($_POST['publise'])){
        
         else{
 
-            echo  "<h6 class='text-center text-white bg-dark'>please enter the vaild detail</h6>";
+            echo  "<script>alert('please enter the vaild details')</script>";
         }
 
 
@@ -65,7 +65,7 @@ if(isset($_POST['publise'])){
     <header>
     <nav>
             <div class="flex action-bar">
-                <a href="login.php"><span class="las la-angle-left"></span></a>
+                <a href="index.php"><span class="las la-angle-left"></span></a>
                 <div class="info">
                     <h5>Forget Account Password</h5>
                 </div>
@@ -85,9 +85,9 @@ if(isset($_POST['publise'])){
  
         <input class="form-control" type="text" name="phone"  placeholder="Phone Number" ></input>
         </div>
-        <div class="form-group fom1">
+        <!-- <div class="form-group fom1">
         <input class="form-control" type="text" name="otp" placeholder="OTP code" ></input>
-        </div>
+        </div> -->
         <div class="form-group fom1">
         <input class="form-control" type="password" name="setting_login" placeholder="Set New Password" ></input>
         </div>

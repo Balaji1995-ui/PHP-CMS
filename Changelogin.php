@@ -1,7 +1,7 @@
 <?php
 require './admin/conn.php';
 require './admin/auth.php';
-// error_reporting(0);
+error_reporting(0);
 
 session_start();
 $sess= mysqli_query($con,"select * from settings");
@@ -9,29 +9,24 @@ $set =mysqli_fetch_array($sess);
 date_default_timezone_set('Asia/Kolkata');
 
 
-$edit = $_GET['edit'];
- $resultt = mysqli_query($con,"SELECT * FROM users where id='.$edit.'");
+// $edit = $_GET['edit'];
+ $resultt = mysqli_query($con,"SELECT * FROM users where phone ='".$_SESSION['phone']."'");
  $roww = mysqli_fetch_array($resultt);
 
-
-
-
-//id, name, phone, bank_acc, bank, ifsc, wpassword
 
 if(isset($_POST['add'])){
 	
     $name = $_POST['nelogin'];
     $conac= $_POST['conac'];
-    
-    if($edit==''){
-        $insertdata = mysqli_query($con,"UPDATE users SET setting_login='$name', confirm_login='$conac' where id='$edit'");
-    
+    $old=$_POST['ologin'];
+    if($old > 0 &&  $name > 0){
+        $insertdata = mysqli_query($con,"UPDATE users SET setting_login='$name', confirm_login='$conac' where phone='".$_SESSION['phone']."'");
+        echo "<script>alert('Password Successfully Changed');</script>";
       
     }
     else{
-        $insertdata = mysqli_query($con,"UPDATE users SET setting_login='$name', confirm_login='$conac' where id='$edit'");
-        echo "<script>alert('Updated Successfully');</script>";
-            // <script>window.location.href = 'add-category.php'</script>";
+     
+        echo "<script>alert('Invaild Password');</script>";
 
     }
     

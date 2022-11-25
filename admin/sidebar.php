@@ -70,7 +70,7 @@
             <a href="Managebook.php" class="nav-link <?php if($a==14){ echo 'active'; }?>">
                <i class="fa fa-users nav-icon"></i>
               <p>
-               Manage Booking
+       Withdrawal Request
               </p>
             </a>
           </li> 
@@ -78,7 +78,7 @@
             <a href="UserReport.php" class="nav-link <?php if($a==15){ echo 'active'; }?>">
                <i class="fa fa-users nav-icon"></i>
               <p>
-             User Reports
+           ManageBooking
               </p>
             </a>
           </li> 
@@ -90,7 +90,14 @@
               </p>
             </a>
           </li> 
-		  
+          <li class="nav-item has-treeview menu-open">
+            <a href="recentPost1.php" class="nav-link <?php if($a==16){ echo 'active'; }?>">
+               <i class="fa fa-users nav-icon"></i>
+              <p>
+          User Details
+              </p>
+            </a>
+          </li>
 		  <!-- <li class="nav-item has-treeview menu-open">
             <h5 class="pt-2 pb-2" style="color:white;">BLOG SECTION</h5>
 			</li>

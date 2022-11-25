@@ -94,10 +94,18 @@ while ($row =mysqli_fetch_array($medians)) {
 </div>
 
 <div id="Paris" class="w3-container city  tab2" style="display:none">
-
- <p> ...No data found..</p>
-
-
+<!-- <div class="card">
+<form method="POST" action="" class="p-3">
+			<div class="form-inline">
+				<input type="date" name="from" required="required"/>
+				<input type="date"  name="to" required="required"/>
+				<button class="btn btn-primary" name="search"><span class="glyphicon glyphicon-search"></span> Search</button>
+			</div>
+		</form>
+      
+	
+</div> -->
+ --No Data--
 </div>
 
 

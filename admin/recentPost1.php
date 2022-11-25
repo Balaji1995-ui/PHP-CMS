@@ -2,7 +2,7 @@
 include 'conn.php';
 include 'auth.php';
 // error_reporting(0);
-$a=11;
+$a=16;
 ?>
 <!DOCTYPE html>
 <html>
@@ -65,7 +65,7 @@ if (isset($_GET["page"])) {
 $serial = ($page-1) * $limit; 
 
   
-    $resultt = mysqli_query($con,"SELECT * FROM bank_details  ORDER BY id DESC LIMIT $serial, $limit");
+    $resultt = mysqli_query($con,"SELECT * FROM users ORDER BY id DESC LIMIT $serial, $limit");
 
 
 ?>
@@ -77,7 +77,7 @@ $serial = ($page-1) * $limit;
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Bank Details</h1>
+            <h1>Users Record</h1>
           </div>
           <!-- <div class="col-sm-6" style="text-align:right;">
             <a class="btn btn-primary" href="add-services.php">
@@ -102,7 +102,7 @@ $serial = ($page-1) * $limit;
         <div class="col-md-12">
           <div class="card card-info">
             <div class="card-header ">
-              <h3 class="card-title">Bank Details</h3>
+              <h3 class="card-title">User Details</h3>
 
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -114,11 +114,8 @@ $serial = ($page-1) * $limit;
                 <thead class="w-75">
                 <tr>
                     <th>Id</th>
-                    <th>Customer Name</th>
-                    <th>Member_ID</th>
-                    <th>Bank Account</th>
-                    <th>Bank Name</th>
-                    <th >IFSC Code</th>
+                    <th>phone</th>
+                    <th>invite code</th>
                 
               
           
@@ -131,11 +128,9 @@ $serial = ($page-1) * $limit;
 				  <tr >
 					<!-- <td><img style="width:100px;" src="../assets/img/logo/<?php echo $roww["img"]; ?>"></td> -->
           <td><?php echo $roww["id"]; ?></td>
-                    <td><?php echo $roww["name"]; ?></td>
                     <td><?php echo $roww["phone"]; ?></td>
-                    <td><?php echo $roww["bank_acc"]; ?></td>
-                    <td><?php echo $roww["bank"]; ?></td>
-                    <td ><?php echo $roww["ifsc"]; ?></td>
+              
+                    <td><?php echo $roww["invitate"]; ?></td>
                    
                
            

@@ -9,17 +9,26 @@
 // $displayCurrency = 'INR';
 
 
-$keyId = 'rzp_test_82w8nwDrvtgzaz';
-$keySecret = 'Q1isHP69FYlH3AwlHjfWYOnQ';
+$keyId = 'rzp_live_AhgN6Xf60nvV4u';
+$keySecret = 'wFnUJQPwlGKoJplpeAm1pDpE';
 $displayCurrency = 'INR';
 
-$host = 'db-visual.c1s8ehgdn3pp.us-east-1.rds.amazonaws.com';
+// $host = 'db-visual.c1s8ehgdn3pp.us-east-1.rds.amazonaws.com';
+
+// $user = "root";
+
+// $password = '9s0umq3hTjeEbAWRg2EJ';
+
+// $dbname = "invest";
+
+$host = 'localhost';
 
 $user = "root";
 
-$password = '9s0umq3hTjeEbAWRg2EJ';
+$password = 'root';
 
 $dbname = "invest";
+
 
 
 // $host = "localhost";

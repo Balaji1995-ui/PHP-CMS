@@ -61,7 +61,7 @@ else{
         </nav>
         <nav>
             <div>
-        <h3 class="inde">Dream Home</h3>
+        <h3 class="inde" style="font-weight:bold">Dream Home</h3>
       
         <p>We Helped build your dream's Home</p>
         <p class="text-center bg-secondary rounded p-2"><?php echo($_SESSION['phone']);  ?> <span> <a href="DataSecure.php"><img src="./img/notes.png" width="10%"/></a></span></p>

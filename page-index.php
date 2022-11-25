@@ -3,7 +3,7 @@ include './admin/conn.php';
 session_start();
 $sess= mysqli_query($con,"SELECT * FROM settings");
 $set =mysqli_fetch_array($sess);
-// error_reporting(0);
+error_reporting(0);
 $median = mysqli_query($con,"SELECT * FROM tbl_plan_detail");
 
 $medians = mysqli_query($con,"SELECT * FROM tbl_plan_detail");
@@ -20,8 +20,8 @@ if(isset($_POST['publise'])){
   $amount= $_POST['price'];
   $value=$_POST['value'];
 
-  if($phone!==""  && $amount!==0 ){
-    $insertdata = mysqli_query($con,"UPDATE orders SET price=('$value'-'$amount') where email='$phone'");
+  if($phone!=="" && $amount > 0 ){
+    $insertdata = mysqli_query($con,"UPDATE orders SET price='$value'-'$amount' where email='".$_SESSION['phone']."'");
     
   }
   else{
@@ -70,12 +70,12 @@ echo "<script>alert('insufficient funds...!!')</script>";
 
                <div class=" bg-info grid-item"id="card1" >
                <span><img src="./img/wallet.png" width="46%"/></span>
-                  <a href="Recharge.php"><h6 class="head">Recharge</h6> </a>    
+                  <a href="Recharge.php" style="text-decoration:none;"><h6 class="head">Recharge</h6> </a>    
 
                </div>
                          <div class="grid-item1 bg-secondary" id="card1">
                          <span><img src="./img/profile.png" width="46%"/></span>
-                  <a href="withdrawel.php"><h6 class="head text-white">Withdraw</h6>  </a>  
+                  <a href="withdrawel.php" style="text-decoration:none;"><h6 class="head text-white">Withdraw</h6>  </a>  
 
                          </div>
                   <!--   <div class="grid-item">
@@ -98,7 +98,7 @@ echo "<script>alert('insufficient funds...!!')</script>";
                     <div class="promo-info">
                         <h3>Dream Home</h3>
                         <p>We Helped build your dream's House</p>
-                        <a href="Recharge.php">Invest now</a>
+                        <a href="Recharge.php" style="text-decoration:none;">Invest now</a>
                     </div>
                 </div>
                 <div class="promo-item">
@@ -106,7 +106,7 @@ echo "<script>alert('insufficient funds...!!')</script>";
                     <div class="promo-info">
                         <h3>Dream Home</h3>
                         <p>We Helped build your dream's House</p>
-                        <a href="Recharge.php" >Invest now</a>
+                        <a href="Recharge.php" style="text-decoration:none;" >Invest now</a>
                     </div>
                 </div>
 
@@ -192,10 +192,10 @@ while ($row =mysqli_fetch_array($medians)) {
       </div>
       <div class="modal-body">
         <form method="post" >
-<input class="form-control" name="email" value="<?php echo($_SESSION['phone']);?>"> </input>
+<input class="form-control" type="hidden" name="email" value="<?php echo($_SESSION['phone']);?>"> </input>
       <br/>
 
-      
+      <label>Wallet Amount</label>
       <input class="form-control input1" name="amount"   value="<?php echo($sets['sum(price)']);?>" placeholder="Money Add"> </input>
       <br/>
       <input class="form-control" name="value" placeholder="invest amount" > </input>
@@ -418,11 +418,11 @@ while ($row =mysqli_fetch_array($media)) {
                 <div class="nav-items">
                     <div class="nav-item">
                         <span class="las la-home"></span>
-                        <a href="page-index.php"  ><p>Home</p></a>
+                        <a href="page-index.php"   style="text-decoration:none;"><p>Home</p></a>
                     </div>
                     <div class="nav-item">
                         <span class="las la-shopping-bag"></span>
-                       <a href="product.php"> <p>Teams</p></a>
+                       <a href="product.php" style="text-decoration:none;"> <p>Teams</p></a>
                     </div>
                 </div>
                 <div class="nav-item-main">
@@ -437,7 +437,7 @@ while ($row =mysqli_fetch_array($media)) {
                     </div>
                     <div class="nav-item">
                         <span class="las la-users"></span>
-                        <a href="user.php"> <p>users</p></a>
+                        <a href="user.php" style="text-decoration:none;"> <p>users</p></a>
                     </div>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 <?php
 require './admin/conn.php';
 require './admin/auth.php';
-session_start();
+
 $sess= mysqli_query($con,"select * from settings");
 $set =mysqli_fetch_array($sess);
 
@@ -74,7 +74,7 @@ $median = mysqli_query($con,"SELECT * FROM tbl_plan_detail ORDER BY id ASC");
                     <h6><img src="./img/login.png" width="8%"/> Change Login password  <span class="las la-angle-right"></span></h6>
                     </a>
                     <hr/>
-                    <a href="products.html"  id="line1">
+                    <a href="Changewidth.php"  id="line1">
                     <h6><img src="./img/login.png" width="8%"/> Change withdraw Password <span class="las la-angle-right"></span></h6>
                     </a>
 

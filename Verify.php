@@ -49,7 +49,7 @@ if ($success === true)
     $sql = "INSERT INTO `orders` (`order_id`, `razorpay_payment_id`, `status`, `email`, `price`,`transaction_date`) VALUES ('$razorpay_order_id', '$razorpay_payment_id', 'success', '$contactno', '$price','$today')";
     if(mysqli_query($con, $sql)){
         
-        echo "<script>alert('SignUp Successfully');</script>
+        echo "<script>alert('payment Successfully');</script>
         <script>window.location.href ='index.php'</script>";
 
       

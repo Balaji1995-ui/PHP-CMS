@@ -110,7 +110,7 @@ $serial = ($page-1) * $limit;
               </div>
             </div>
             <div class="card-body p-0 ">
-              <table class="table " id="myTable">
+              <table class="table table-striped table-bordered " id="myTable">
                 <thead class="w-75">
                 <tr>
                     <th>Id</th>

@@ -3,7 +3,11 @@ include 'conn.php';
 include 'auth.php';
 
 $a=1;
+$settings= mysqli_query($con,"select phone from users order by phone");
+$setting =mysqli_num_rows($settings);
 
+// $wallets= mysqli_query($con,"select sum(price) from orders");
+// $wallet =mysqli_num_rows($wallet);
 // $sql = ("SELECT COUNT(id) FROM users");
 // $result = mysql_fetch_array($sql);
 // $settings= mysqli_query($con,"SELECT COUNT(*) as bookcode
@@ -89,12 +93,12 @@ $a=1;
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-			<a href="UserReport.php" class="small-box-footer">
+			<a href="recentPost1.php" class="small-box-footer">
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>View User</h3>
+                <h3>Total User</h3>
 
-                <p>View</p>
+                <p> <?php echo '<h5 class="font-weight-bold">'.$setting.'</h5>' ?></p>
 
                 <span class="info-box-number"><?php
                                          
@@ -107,7 +111,25 @@ $a=1;
 			</a>
           </div>
           <!-- ./col -->
-          
+          <!-- <div class="col-lg-3 col-6">
+            <!-- small box -->
+			<!-- <a href="recentPost1.php" class="small-box-footer"> -->
+            <!-- <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>Wallet</h3>
+
+                <p> <p> <?php echo '<h5 class="font-weight-bold">'.$wallet.'</h5>' ?>.00</p></p>
+
+                <span class="info-box-number"><?php
+                                         
+                                                    ?></span>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+              </div>
+             </div> -->
+			<!-- </a>
+          </div> --> 
 
 
         </div>

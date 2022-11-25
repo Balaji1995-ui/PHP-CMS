@@ -125,88 +125,10 @@ $median = mysqli_query($con,"SELECT * FROM tbl_plan_detail ORDER BY id ASC");
 <?php }?>
 </div>
 
-<div id="Paris" class="w3-container city  tab2" style="display:none">
-
-  Added soon
-
-
-</div>
-
-<div id="Tokyo" class="w3-container city  tab3" style="display:none">
-  <h2></h2>
-  <p></p>
-</div>
-</div> -->
-        <!-- <div class="popular section-wrapper">
-            <div class="flex-header">
-                <h2>Popular deals</h2>
-                <a href="">See all</a>
-            </div>
-            <div class="items">
-                <div class="popular-item">
-                    <div class="popular-img" style="background-image: url(img/1.jpeg)"></div>
-                </div>
-                <div class="popular-item">
-                    <div class="popular-img" style="background-image: url(img/2.jpeg)"></div>
-                </div>
-                <div class="popular-item">
-                    <div class="popular-img" style="background-image: url(img/3.jpeg)"></div>
-                </div>
-                <div class="popular-item">
-                    <div class="popular-img" style="background-image: url(img/4.jpeg)"></div>
-                </div>
-            </div>
-        </div> -->
-    <!-- </main> -->
-    
-<!--     
-    <div class="bottom-nav">
-        <div class="bottom-inner">
-            <div class="bottom-main">
-                <div class="nav-items">
-                    <div class="nav-item">
-                        <span class="las la-home"></span>
-                        <a data-toggle="modal" data-target="#myModal"  ><p>Home</p></a>
-                    </div>
-                    <div class="nav-item">
-                        <span class="las la-shopping-bag"></span>
-                        <p>Teams</p>
-                    </div>
-                </div>
-                <div class="nav-item-main">
-                    <div>
-                        <span class="las la-shopping-action"></span>
-                    </div>
-                </div>
-                <div class="nav-items">
-                    <div class="nav-item">
-                        <span class="las la-gift"></span>
-                        <p>VIP</p>
-                    </div>
-                    <div class="nav-item">
-                        <span class="las la-users"></span>
-                        <p>users</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-   
-
-</div> -->
 
 
 
-    <!-- <script>
-function openCity(cityName) {
-  var i;
-  var x = document.getElementsByClassName("city");
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";  
-  }
-  document.getElementById(cityName).style.display = "block";  
-}
-</script> -->
+
 <script src="img/js/bootstrap.min.js"></script>
 
 

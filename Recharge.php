@@ -97,7 +97,7 @@ $median = mysqli_query($con,"SELECT * FROM tbl_plan_detail ORDER BY id ASC");
 <hr/>
 
                     <div class="col-12 form-group">
-               <input class="btn btn-danger text-white fom" type="submit" name="submit" >Confirm Recharge</input>
+               <input class="btn btn-danger text-white fom" type="submit" name="submit" ></input>
                </div>
                </form>    
 </div>
